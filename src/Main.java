@@ -2,14 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args){
-        Floristeria crearFloristeria = new Floristeria();
-        Arbre afegirArbre = new Arbre();
-        Flor afegirFlor = new Flor();
-        System.out.println("TRIAL");
+
+    public static void main(String[] args) {
+        List<Flor> flors = new ArrayList<>();
+        Flor flor1 = new Flor();
+        flors.add(flor1);
+        Flor flor2 =  new Flor();
+        flors.add(flor2);
+        Flor flor3 = new Flor();
+        flors.add(flor3);
+
+        Llistar llista = new Llistar();
+        llista.getStock(flors);
     }
 }
-
 
 /**
  crearFloristeria

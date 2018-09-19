@@ -1,11 +1,12 @@
 public class Flor {
-    String color = "rosa";
+    public String nom = "ginesta";
+    public String color = "groc";
+    public Double preu = 2.5;
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public Flor flor(String nom,String color,Double preu){
+        this.nom=nom;
+        this.color=color;
+        this.preu=preu;
+        return null;
     }
 }
