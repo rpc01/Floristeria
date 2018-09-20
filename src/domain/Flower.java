@@ -2,6 +2,14 @@ package domain;
 
 public class Flower {
 
+    public FlowerName getName() {
+        return name;
+    }
+
+    public FlowerColor getColor() {
+        return color;
+    }
+
     public FlowerName name;
     public FlowerColor color;
 
@@ -26,4 +34,6 @@ public class Flower {
     public String toString() {
         return name.toString();
     }
+
+
 }
