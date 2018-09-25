@@ -1,37 +1,21 @@
 package domain;
 
-public class Tree {
+public class Tree extends Product {
+   private Name name;
+   private double heigth;
 
-   public Name getName() {
+   public Tree(Name name, double heigth, double price){
+      super(price);
+      this.name = name;
+      this.heigth = heigth;
+   }
+
+   public double getHeigth() {
+      return heigth;
+   }
+
+   public Name getName(){
       return name;
    }
 
-   public Color getColor() {
-      return color;
-   }
-
-   public Name name;
-   public Color color;
-
-   public int getPrice() {
-      return price;
-   }
-
-   public void setPrice(int price) {
-      this.price = price;
-   }
-
-   public int  price;
-
-   public Tree(Name name, Color color, int price) {
-      this.name = name;
-      this.color = color;
-      this.price = price;
-   }
-
-
-   @Override
-   public String toString() {
-      return name.toString();
-   }
 }

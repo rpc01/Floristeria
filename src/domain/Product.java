@@ -1,5 +1,13 @@
 package domain;
 
-public class Product {
-   public Double preu;
+public abstract class Product {
+   private double price;
+
+   public Product(double price) {
+      this.price = price;
+   }
+
+   public double getPrice() {
+      return price;
+   }
 }
