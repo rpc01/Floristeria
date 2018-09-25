@@ -5,53 +5,102 @@
 
 package view;
 
+import application.DecorationStock;
 import application.FlowerStock;
-import domain.Flower;
-import domain.FlowerColor;
-import domain.FlowerName;
+import application.TreeStock;
+import domain.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.Map;
-
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        //afegirFlor
         List<Flower> flowers = new ArrayList<>();
-        flowers.add(new Flower(FlowerName.CLAVELL, FlowerColor.GROC, 2));
-        flowers.add(new Flower(FlowerName.CLAVELL, FlowerColor.GROC, 2));
-        flowers.add(new Flower(FlowerName.ESPIGOL, FlowerColor.LILA,5));
-        flowers.add(new Flower(FlowerName.ESPIGOL, FlowerColor.LILA,6));
+        flowers.add(new Flower(Name.CLAVELL, Color.GROC, 2));
+        flowers.add(new Flower(Name.CLAVELL, Color.GROC, 2));
+        flowers.add(new Flower(Name.ESPIGOL, Color.LILA,5));
+        flowers.add(new Flower(Name.ESPIGOL, Color.LILA,6));
+
+        //afegirArbre
+        List<Tree> trees = new ArrayList<>();
+        trees.add(new Tree(Name.PI, Color.VERD, 20));
+        trees.add(new Tree(Name.ALZINA, Color.GROC, 200));
+
+        //afegirDecoració
+        List<Decoration> decorations = new ArrayList<>();
+        decorations.add(new Decoration(Name.PINYA, Material.FUSTA, 2));
+        decorations.add(new Decoration(Name.BOLA, Material.PLASTIC, 1));
 
 
+        //Treure Stock
+        int totalStock = 0;
+        int totalValue = 0;
         for(int i = 0; i<flowers.size();i++) {
         FlowerStock counter = new FlowerStock();
-        int totalValue = counter.getValue(flowers);
-        int totalStock = counter.getStock(flowers);
-        System.out.println("You got " + totalStock + " units of Flowers with a value of " + totalValue);
-
-           // System.out.println(flowers.get(i));
-
+        totalValue = counter.getValue(flowers);
+        totalStock = counter.getStock(flowers);
         }
+        System.out.println("STOCK");
+        System.out.println("FLORS:");
         flowers.forEach(System.out::println);
+        System.out.println();
+        System.out.println("You got " + totalStock + " units of Flowers with a value of " + totalValue);
+        System.out.println();
 
-        Map<Integer, List<Flower>> byPrice = flowers.stream().collect(
-                Collectors.groupingBy(Flower::getPrice));
+        int total = flowers.stream()
+                .collect(Collectors.summingInt(Flower::getPrice));
 
-        byPrice.forEach((k, v) -> System.out.println("DeptId:"
-                + k
-                + "  "
-                + ((List<Flower>) v).stream().map(m -> m.getPrice())
-                .collect(Collectors.joining(""))));
+        System.out.println(total);
 
-        int total = flowers.stream().collect(
-                Collectors.summingInt(Flower::getPrice));
-        System.out.println("Total Employees Salary : " + total);
-    }
-}
+        Map<Color, Integer> totalByColor
+                = flowers.stream()
+                .collect(Collectors.groupingBy(Flower::getColor,
+                        Collectors.summingInt(Flower::getPrice)));
+        System.out.println(totalByColor);
+
+        Map<Name, List<Flower>> byName
+                = flowers.stream()
+                .collect(Collectors.groupingBy(Flower::getName));
+        System.out.println(byName);
+
+        List<Name> list = flowers.stream().map(Flower::getName).collect(Collectors.toList());
+        System.out.println(list);
+
+
+       /* //Trees
+
+        for(int i = 0; i<trees.size();i++) {
+            TreeStock counter = new TreeStock();
+            totalValue = counter.getValue(trees);
+            totalStock = counter.getStock(trees);
+        }
+        System.out.println("ARBRES:");
+        trees.forEach(System.out::println);
+        System.out.println();
+        System.out.println("You got " + totalStock + " units of Trees with a value of " + totalValue);
+        System.out.println();
+
+        //Decoration
+        System.out.println("DECORACIO:");
+        for(int i = 0; i<trees.size();i++) {
+            DecorationStock counter = new DecorationStock();
+            totalValue = counter.getValue(decorations);
+            totalStock = counter.getStock(decorations);
+        }
+
+        decorations.forEach(System.out::println);
+        System.out.println();
+        System.out.println("You got " + totalStock + " units of decoration items with a value of " + totalValue);
+        System.out.println();
+*/
+
+
+}}
 
 
 
@@ -79,6 +128,25 @@ public class Main {
  YYYYYY
  DECORACIÓ:
  XXXXXXXX
+
+
+ Map<Integer, List<Flower>> byPrice = flowers.stream().collect(
+ Collectors.groupingBy(Flower::getPrice));
+
+ byPrice.forEach((k, v) -> System.out.println("DeptId:"
+ + k
+ + "  "
+ + ((List<Flower>) v).stream().map(m -> m.getPrice())
+ .collect(Collectors.joining(""))));
+
+ int total = flowers.stream().collect(
+ Collectors.summingInt(Flower::getPrice));
+ System.out.println("Total Employees Salary : " + total);
+
+
+
+
+
  **/
 
 

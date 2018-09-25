@@ -1,7 +1,6 @@
 package application;
 
 import domain.Flower;
-import domain.FlowerName;
 
 import java.util.List;
 

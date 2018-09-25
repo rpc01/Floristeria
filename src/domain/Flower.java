@@ -2,16 +2,17 @@ package domain;
 
 public class Flower {
 
-    public FlowerName getName() {
+    public Name getName() {
         return name;
     }
 
-    public FlowerColor getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public FlowerName name;
-    public FlowerColor color;
+    public Name name;
+    public Color color;
+
 
     public int getPrice() {
         return price;
@@ -23,7 +24,7 @@ public class Flower {
 
     public int  price;
 
-    public Flower(FlowerName name, FlowerColor color, int price) {
+    public Flower(Name name, Color color, int price) {
         this.name = name;
         this.color = color;
         this.price = price;

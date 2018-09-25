@@ -1,12 +1,12 @@
 package domain;
 
-public enum FlowerColor {
+public enum Color {
 
-        GROC("Groc"), LILA("Lila");
+        GROC("Groc"), LILA("Lila"), VERD("Verd");
 
         private String name;
 
-        FlowerColor(String name) {
+        Color(String name) {
             this.name = name;
         }
 

@@ -1,12 +1,12 @@
 package domain;
 
-public enum FlowerName {
+public enum Material {
 
-        ESPIGOL("Espigol"), CLAVELL("Clavell");
+        FUSTA("Fusta"), PLASTIC("Plàstic");
 
         private String name;
 
-        FlowerName(String name) {
+        Material(String name) {
             this.name = name;
         }
 
